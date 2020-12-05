@@ -173,7 +173,7 @@ func (s *RPCServer) Start() error {
 	// Start the macaroon service and let it create its default macaroon in
 	// case it doesn't exist yet.
 	if err := s.startMacaroonService(); err != nil {
-		return fmt.Errorf("error starting macaroon service: %v", err)
+		log.Errorf("error starting macaroon service: %v", err)
 	}
 	shutdownFuncs["macaroon"] = s.stopMacaroonService
 
@@ -290,7 +290,7 @@ func (s *RPCServer) StartAsSubserver(lndClient lndclient.LndServices) error {
 	// Start the macaroon service and let it create its default macaroon in
 	// case it doesn't exist yet.
 	if err := s.startMacaroonService(); err != nil {
-		return fmt.Errorf("error starting macaroon service: %v", err)
+		log.Errorf("error starting macaroon service: %v", err)
 	}
 
 	s.cfg.Lnd = lndClient

@@ -93,7 +93,7 @@ func (s *RPCServer) startMacaroonService() error {
 	var err error
 	s.macaroonService, err = macaroons.NewService(
 		s.cfg.FaradayDir, faradayMacaroonLocation,
-		macaroons.IPLockChecker,
+		false, macaroons.IPLockChecker,
 	)
 	if err != nil {
 		return fmt.Errorf("unable to set up macaroon authentication: "+
